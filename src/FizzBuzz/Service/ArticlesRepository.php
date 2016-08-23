@@ -48,10 +48,21 @@ class ArticlesRepository implements RepositoryInterface
 
     public function findById($id)
     {
-        $sql = "SELECT * FROM articles WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['id' => $id]);
+    	$sql = "SELECT * FROM articles WHERE id = :id";
+    	$stmt = $this->db->prepare($sql);
+    	$stmt->execute(['id' => $id]);
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    	return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function findByIdAndSlug($id, $slug)
+    {
+    	$sql = "SELECT * FROM articles WHERE id = :id and slug=:slug";
+    	$stmt = $this->db->prepare($sql);
+    	$stmt->execute(['id' => $id,'slug' => $slug]);
+
+    	return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+
 }

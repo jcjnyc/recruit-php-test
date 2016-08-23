@@ -12,7 +12,7 @@ class Section extends AbstractController
         $section = $sectionsRepository->findBySlug($slug);
 
         if (!is_array($section) or !count($section)) {
-            throw new \Exception("Section not found", 404);
+        	throw new \Exception("Section not found", 404);
         }
 
         $this->tpl->section = $section;

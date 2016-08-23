@@ -4,8 +4,14 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="jumbotron">
-                <h1>404 <small><em>Fizz</em><strong>Buzz</strong></small></h1>
-                <p>The resource you are looking for could not be found.</p>
+                <?php if (null === $this->uri): ?>
+        	        <h1>Error <small><em>Fizz</em><strong>Buzz</strong></small></h1>
+                	<p>Sorry, unknown system error happened.</p>
+            	<?php else: ?>
+        	        <h1>404 <small><em>Fizz</em><strong>Buzz</strong></small></h1>
+    	           	<p>The resource you are looking for could not be found.</p>
+	               	<p>uri attempted:<?= htmlentities($this->uri)?></p>
+               	 <?php endif;?>
             </div>
         </div>
     </div>
